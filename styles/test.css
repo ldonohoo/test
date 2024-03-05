@@ -1,0 +1,53 @@
+/*__________________________________________________
+    Initial media queries/accessibility 
+  __________________________________________________*/
+
+
+/* if screen is over a certain width, call wide display layer first
+    so it's first in precedence.  Otherwise, call narrrow first. */
+@media (min-width: 1000px) {
+    @layer wide-display;
+}
+@media(max-width: 1000px) and (min-width: 600px)  {
+    @layer medium-display;
+}
+@media (max-width: 600px) {
+    @layer narrow-display;
+}
+/*
+@layer narrow-display;
+@layer medium-display;
+@layer wide-display;
+*/
+
+
+/* narrow display flexbox/grid stuff goes here... */
+@layer narrow-display {  
+    #magic-circle  {
+        background-color: blue;
+    }
+}
+
+/* medium-wide display flexbox/grid stuff goes here...  */
+@layer medium-display {
+    #magic-circle  {
+        background-color: yellow;
+    }
+}
+
+/* wide display flexbox/grid stuff goes here... */
+@layer wide-display {
+    #magic-circle {
+        background-color: orange;
+    }
+}
+
+#magic-circle {
+    position: fixed;
+    top: 6rem;
+    left: 0rem;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    border: 0.5rem solid black;
+}
